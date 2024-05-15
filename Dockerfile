@@ -1,8 +1,4 @@
-FROM node:19
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD ["npm", "start"]
-
+FROM mysql 
+COPY dump.sh /
+RUN chmod +x /dump.sh
+ENTRYPOINT ["/dump.sh"]
